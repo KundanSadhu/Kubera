@@ -1,0 +1,21 @@
+{
+  "login": "Login",
+  "register": "Register",
+  "email": "Email",
+  "password": "Password",
+  "name": "Name",
+  "dashboard": "Dashboard",
+  "crm": "CRM",
+  "invoices": "Invoices",
+  "agents": "Agents",
+  "tasks": "Tasks",
+  "analytics": "Analytics",
+  "logout": "Logout",
+  "welcome": "Welcome to KUBERA",
+  "tagline": "Your Self-Managing Digital Workforce",
+  "create_lead": "Create Lead",
+  "create_invoice": "Create Invoice",
+  "total_revenue": "Total Revenue",
+  "total_leads": "Total Leads",
+  "conversion_rate": "Conversion Rate"
+}

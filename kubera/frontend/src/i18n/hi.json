@@ -1,0 +1,21 @@
+{
+  "login": "लॉगिन",
+  "register": "रजिस्टर",
+  "email": "ईमेल",
+  "password": "पासवर्ड",
+  "name": "नाम",
+  "dashboard": "डैशबोर्ड",
+  "crm": "सीआरएम",
+  "invoices": "चालान",
+  "agents": "एजेंट",
+  "tasks": "कार्य",
+  "analytics": "विश्लेषण",
+  "logout": "लॉगआउट",
+  "welcome": "कुबेर में आपका स्वागत है",
+  "tagline": "आपका स्व-प्रबंधित डिजिटल कार्यबल",
+  "create_lead": "लीड बनाएं",
+  "create_invoice": "चालान बनाएं",
+  "total_revenue": "कुल राजस्व",
+  "total_leads": "कुल लीड्स",
+  "conversion_rate": "रूपांतरण दर"
+}
