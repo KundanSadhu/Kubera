@@ -1,0 +1,9 @@
+{
+  "framework": "vite",
+  "buildCommand": "cd kubera/frontend && npm install && npm run build",
+  "outputDirectory": "kubera/frontend/dist",
+  "installCommand": "cd kubera/frontend && npm install",
+  "env": {
+    "VITE_API_URL": "@vite_api_url"
+  }
+}
