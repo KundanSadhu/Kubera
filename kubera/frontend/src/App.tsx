@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate, Link, useNavigate } from 'react-router-dom'
 import { useAuth } from './store/auth'
 import { useTranslation } from 'react-i18next'
+import Landing from './pages/Landing'
 import Login from './pages/Login'
 import Dashboard from './pages/Dashboard'
 import CRM from './pages/CRM'
@@ -35,13 +36,14 @@ export default function App() {
         </nav>
       )}
       <Routes>
+        <Route path="/" element={<Landing />} />
         <Route path="/login" element={<Login />} />
         <Route path="/dashboard" element={<Protected><Dashboard /></Protected>} />
         <Route path="/crm" element={<Protected><CRM /></Protected>} />
         <Route path="/invoices" element={<Protected><Invoices /></Protected>} />
         <Route path="/agents" element={<Protected><Agents /></Protected>} />
         <Route path="/tasks" element={<Protected><Tasks /></Protected>} />
-        <Route path="*" element={<Navigate to={token ? "/dashboard" : "/login"} replace />} />
+        <Route path="*" element={<Navigate to={token ? "/dashboard" : "/"} replace />} />
       </Routes>
     </div>
   )
