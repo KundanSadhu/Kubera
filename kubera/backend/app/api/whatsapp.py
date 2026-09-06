@@ -16,16 +16,23 @@ async def whatsapp_webhook(payload: dict, db: AsyncSession = Depends(get_db)):
     db.add(msg)
     await db.commit()
 
-    # Mock auto-reply if enabled
+    # Mock auto-reply if enabled - fast fallback, no LLM hang
     reply = None
     if settings.whatsapp_mode == "mock" and body:
-        # Simple mock: echo with LLM if available
-        try:
-            from app.llm.router import call_llm
+        # Skip LLM if Ollama not reachable to avoid 60s timeout on local
+        reply_text = f"Thanks for contacting KUBERA! We received: {body} (auto-reply mock)"
+        # Try LLM with short timeout only if OPENAI key present
+        if settings.openai_api_key:
+            try:
+                import asyncio
+                from app.llm.router import call_llm
 
-            reply_text = await call_llm(f"Reply as Sales Guru to WhatsApp from {phone}: {body}", system="You are Sales Guru, concise WhatsApp reply.")
-        except Exception:
-            reply_text = f"Thanks for contacting KUBERA! We received: {body}"
+                reply_text = await asyncio.wait_for(
+                    call_llm(f"Reply as Sales Guru to WhatsApp from {phone}: {body}", system="You are Sales Guru, concise WhatsApp reply."),
+                    timeout=3.0,
+                )
+            except Exception:
+                pass  # keep mock reply
         outbound = WhatsAppMessage(phone=phone, body=reply_text, direction="outbound", status="sent")
         db.add(outbound)
         await db.commit()
