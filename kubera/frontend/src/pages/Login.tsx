@@ -5,7 +5,7 @@ import { useAuth } from '../store/auth'
 import { useTranslation } from 'react-i18next'
 
 export default function Login() {
-  const [email, setEmail] = useState('admin@kubera.local')
+  const [email, setEmail] = useState('admin@kubera.com')
   const [password, setPassword] = useState('kubera123')
   const [name, setName] = useState('')
   const [isRegister, setIsRegister] = useState(false)
@@ -45,7 +45,7 @@ export default function Login() {
         {err && <p className="text-red-500 text-sm" style={{ color: '#ef4444', fontSize: '0.875rem', background: '#fef2f2', padding: '0.5rem', borderRadius: '0.5rem' }}>{err}</p>}
         <button type="submit" disabled={loading} className="w-full bg-amber-500 text-slate-900 font-semibold py-2 rounded" style={{ width: '100%', background: loading ? '#fcd34d' : '#f59e0b', color: '#0f172a', fontWeight: 600, padding: '0.6rem', borderRadius: '0.5rem', border: 'none', cursor: loading ? 'not-allowed' : 'pointer' }}>{loading ? 'Please wait…' : (isRegister ? String(t('register') || 'Register') : String(t('login') || 'Login'))}</button>
         <button type="button" onClick={()=>setIsRegister(!isRegister)} className="w-full text-sm text-slate-500" style={{ width: '100%', fontSize: '0.875rem', color: '#64748b', background: 'transparent', border: 'none', cursor: 'pointer' }}>{isRegister ? 'Have account? Login' : 'Need account? Register'}</button>
-        <p className="text-xs text-center text-slate-400" style={{ fontSize: '0.75rem', textAlign: 'center', color: '#94a3b8' }}>Default: admin@kubera.local / kubera123</p>
+        <p className="text-xs text-center text-slate-400" style={{ fontSize: '0.75rem', textAlign: 'center', color: '#94a3b8' }}>Default: admin@kubera.com / kubera123</p>
         <p style={{ fontSize: '0.7rem', textAlign: 'center', color: '#94a3b8' }}>Backend: <a href="http://127.0.0.1:8000/health" target="_blank" style={{ color: '#f59e0b' }}>health</a> • <a href="http://127.0.0.1:8000/docs" target="_blank" style={{ color: '#f59e0b' }}>API docs</a></p>
       </form>
     </div>

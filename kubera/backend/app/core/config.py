@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     chroma_port: int = 8000
     jwt_secret: str = "change-me-32chars-minimum-for-jwt-production"
     jwt_expire_minutes: int = 60 * 24 * 7
-    admin_email: str = "admin@kubera.local"
+    admin_email: str = "admin@kubera.com"
     admin_password: str = "kubera123"
     ollama_host: str = "http://host.docker.internal:11434"
     ollama_model: str = "llama3.1:8b"
