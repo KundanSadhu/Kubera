@@ -24,10 +24,16 @@ async def lifespan(app: FastAPI):
 
 app = FastAPI(title="KUBERA API", version="0.1.0-mvp", lifespan=lifespan)
 
+# CORS: "*" + allow_credentials=True is rejected by browsers.
+# When wildcard (Render testing mode CORS_ORIGINS=*), disable credentials.
+# When specific frontend URL(s), allow credentials for JWT cookie/header.
+_cors_origins = settings.cors_origins_list
+_is_wildcard = settings.is_wildcard_cors
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.cors_origins_list + ["*"],
-    allow_credentials=True,
+    allow_origins=_cors_origins,
+    allow_credentials=not _is_wildcard,
     allow_methods=["*"],
     allow_headers=["*"],
 )
